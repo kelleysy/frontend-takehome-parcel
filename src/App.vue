@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div id="app"
+       class="color-blue-darkest m-all-60 font-size-16">
     <h1 class="center-sm">Welcome to GemSearch</h1>
     <Saved />
     <Search />
@@ -19,24 +20,25 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import './scss/variables.scss';
+
 #app {
   font-family: 'Raleway', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin: 60px;
 }
 
 button {
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
-  font-size: 16px;
   border-radius: 10px;
   box-shadow: none;
   border: none;
   padding: 6px 10px;
   outline: none;
   cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 </style>

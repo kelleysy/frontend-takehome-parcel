@@ -32,26 +32,22 @@ export default {
     },
 
     saveGem (state, gem) {
-      console.log('adding this gem===' + gem.name)
       state.savedGems.push(gem)
       this.commit('setLocalStorage')
     },
 
     removeGem (state, gem) {
-      console.log('removing this gem===' + gem.name)
       state.savedGems = state.savedGems.filter(i => i.name !== gem.name)
       this.commit('setLocalStorage')
     },
 
     setLocalStorage (state) {
       localStorage.setItem('savedGems', JSON.stringify(state.savedGems))
-      console.log(localStorage.savedGems)
     }
   },
 
   actions: {
     getGems (context, terms) {
-      console.log('terms=' + terms)
       let cors = 'https://cors.io/?'
       let api = `${cors}https://rubygems.org/api/v1/search.json?query=${terms}`
       axios({ method: 'GET', url: api }).then(response => {

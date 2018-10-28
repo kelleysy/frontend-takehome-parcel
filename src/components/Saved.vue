@@ -3,15 +3,22 @@
     <h2>Your Saved Gems: {{ savedGems.length }}</h2>
 
     <div v-for="(gem, index) in savedGems"
-         class="row middle-sm"
+         class="row middle-sm m-vertical-20"
          :key="index">
       <div class="col-sm-1">
-        <button @click="remove(gem)">
+        <button @click="remove(gem)"
+                class="bg-red-light">
           Remove
         </button>
       </div>
-      <div class="gem-name col-sm-4">
-          {{ gem.name }}
+      <div class="gem-name col-sm-3">
+        {{ gem.name }}
+      </div>
+      <div class="col-sm">
+        <a :href="gem.documentation_uri"
+           target="_blank">
+           more
+        </a>
       </div>
       <div class="col-sm">
           {{ gem.version }}
@@ -44,25 +51,12 @@ export default {
 }
 </script>
 
-<style scoped>
-.row {
-  margin: 20px 0;
-
-  &:hover {
-    background-color: #efefef;
-  }
-}
-
-button {
-  background-color: #fba8a8;
-}
-
+<style scoped lang="scss">
 .saved {
-  border-bottom: 6px dashed #dfb3e7;
+  border-bottom: 3px dashed;
 }
 
 .gem-name {
   text-transform: uppercase;
-  color: #121fae;
 }
 </style>

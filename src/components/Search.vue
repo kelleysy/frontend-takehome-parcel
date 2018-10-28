@@ -5,17 +5,17 @@
     </div>
     <div class="col-sm-12 row">
       <input v-model="terms"
-             class="col-sm-7"
              placeholder="'rails'"
-             @keyup.enter="search">
+             @keyup.enter="search"
+             class="col-sm-7 font-size-18 border-color-grey-medium">
       <button @click="search"
               :disabled="disabled"
-              class="search">
+              class="search font-size-18 bg-blue-light p-vertical-15 p-horizontal-25">
         Search
       </button>
     </div>
     <div class="col-sm-12">
-      <p v-if="searchHit">You looked for: {{ userSearch }}</p>
+      <p v-if="searchHit"><i>You searched for: {{ userSearch }}</i></p>
       <p v-if="!resultsExist && searchHit">Loading...</p>
     </div>
     <SearchResults v-if="resultsExist && searchHit"
@@ -35,7 +35,7 @@ export default {
 
   data () {
     return {
-      terms: 'cucumber',
+      terms: '',
       searchHit: false,
       userSearch: ''
     }
@@ -71,16 +71,16 @@ export default {
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import './scss/variables.scss';
+
 input {
-  font-size: 18px;
   font-family: inherit;
   outline: none;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid;
 }
 button.search {
   border-radius: 0 10px 10px 0;
-  font-size: 18px;
-  background-color: #b8deef;
-  padding: 15px 25px;
 }
 </style>

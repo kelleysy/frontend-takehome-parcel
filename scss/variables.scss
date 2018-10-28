@@ -1,0 +1,59 @@
+$colors: (
+  green-light: #b3e7be,
+  grey-medium: #c0c0c0,
+  grey-light: #f2f2f2,
+  red-dark: #ff0000,
+  red-light: #fba8a8,
+  blue-light: #b8deef,
+  blue-dark: #0000ff,
+  blue-darkest: #2c3e50
+);
+
+$font-sizes: 16 18 20;
+
+$spacing-sizes: 0 5 10 15 20 25 60;
+
+@each $size in $font-sizes {
+  .font-size-#{$size} {
+    font-size: #{$size}px;
+  }
+}
+
+@each $size in $spacing-sizes {
+  .m-all-#{$size} {
+    margin: #{$size}px;
+  }
+
+  .m-vertical-#{$size} {
+    margin-top: #{$size}px;
+    margin-bottom: #{$size}px;
+  }
+
+  .p-vertical-#{$size} {
+    padding-top: #{$size}px;
+    padding-bottom: #{$size}px;
+  }
+
+  .p-horizontal-#{$size} {
+    padding-left: #{$size}px;
+    padding-right: #{$size}px;
+  }
+}
+
+@each $name, $hex in $colors {
+  .bg-#{$name} {
+    background-color: $hex;
+  }
+
+  .color-#{$name} {
+    color: $hex;
+  }
+
+  .border-color-#{$name} {
+    border-color: $hex;
+  }
+}
+
+@function color($name) {
+  @return map-get($colors, $name);
+}
