@@ -1,21 +1,23 @@
 <template>
-  <div class="search row">
+  <div class="search">
     <div class="col-sm-12">
       <h2>Search for some gems:</h2>
     </div>
     <div class="col-sm-12 row">
       <input v-model="terms"
-             placeholder="edit me"
-             class="col-sm-7">
+             class="col-sm-7"
+             placeholder="'rails'"
+             @keyup.enter="search">
       <button @click="search"
               :disabled="disabled"
-              :class="{'disabled': disabled}">
+              class="search">
         Search
       </button>
     </div>
-    <p v-if="searchHit">You looked for: {{ terms }}</p>
-
-    <p v-if="!resultsExist && searchHit">Loading...</p>
+    <div class="col-sm-12">
+      <p v-if="searchHit">You looked for: {{ userSearch }}</p>
+      <p v-if="!resultsExist && searchHit">Loading...</p>
+    </div>
     <SearchResults v-if="resultsExist && searchHit"
                    :gems="gems" />
   </div>
@@ -34,7 +36,8 @@ export default {
   data () {
     return {
       terms: 'cucumber',
-      searchHit: false
+      searchHit: false,
+      userSearch: ''
     }
   },
 
@@ -58,12 +61,9 @@ export default {
   },
 
   methods: {
-    getGems () {
-      console.log('calling get gems')
-    },
-
     search () {
       this.searchHit = true
+      this.userSearch = this.terms
       this.$store.dispatch('getGems', this.terms)
     }
   }
@@ -72,5 +72,15 @@ export default {
 </script>
 
 <style scoped>
-
+input {
+  font-size: 18px;
+  font-family: inherit;
+  outline: none;
+}
+button.search {
+  border-radius: 0 10px 10px 0;
+  font-size: 18px;
+  background-color: #b8deef;
+  padding: 15px 25px;
+}
 </style>

@@ -1,14 +1,18 @@
 <template>
   <div class="results">
     <div v-for="(gem, index) in gems"
+         class="row middle-sm"
          :key="index">
-      <button @click="save(gem)">
-        &plus;
-      </button>
-      {{ gem.name }}
-      <hr />
+      <div class="col-sm-1">
+          <button class="save"
+                  @click="save(gem)">
+            Save
+          </button>
+      </div>
+      <div class="col-sm">
+        {{ gem.name }}
+      </div>
     </div>
-
   </div>
 </template>
 
@@ -30,7 +34,12 @@ export default {
 </script>
 
 <style scoped>
-hr {
-  border-style: ridge;
+.row {
+  border-bottom: 1px solid #f2f2f2;
+  padding: 5px 0;
+}
+
+button {
+  background-color: #b3e7be;
 }
 </style>

@@ -37,5 +37,6 @@ button {
   border: none;
   padding: 6px 10px;
   outline: none;
+  cursor: pointer;
 }
 </style>
